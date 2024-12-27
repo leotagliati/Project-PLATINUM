@@ -4,6 +4,7 @@ import Footer from './Footer'
 import Card from './Card';
 import Icon from './Icon';
 import CovertLetter from './CovertLetter';
+import { Parallax, ParallaxLayer } from '@react-spring/web';
 function App() {
   const projectList = [
     { name: 'Sword of Obsessia', desc: 'In Sword of Obsessia, you embark on an epic journey as a knight with a cursed sword. Traverse through the dungeon, confront your fears and rise!', imagePath: 'Images/project1Image.png' },
@@ -23,22 +24,24 @@ function App() {
   const socialIconsMap = iconSocialMediaList.map(x => <Icon id={x.name} imagePath={x.imagePath} link={x.link}></Icon>)
   return (
     <>
-      <div className='head'>
-        <div className='socialIcons'>
-          {socialIconsMap}
+      <Parallax page={2} style={{ top: '0', left: '0' }} className="animation">
+        <div className='head'>
+          <div className='socialIcons'>
+            {socialIconsMap}
+          </div>
+          <Header id="MainTitle"></Header>
         </div>
-        <Header id="MainTitle"></Header>
-      </div>
 
-      <div className='covertLetter'>
-        <CovertLetter></CovertLetter>
-      </div>
+        <div className='covertLetter'>
+          <CovertLetter></CovertLetter>
+        </div>
 
-      <h1>Projects</h1>
-      <div className='gallery'>
-        {projectsMap}
-      </div>
-      <Footer></Footer>
+        <h1>Projects</h1>
+        <div className='gallery'>
+          {projectsMap}
+        </div>
+        <Footer></Footer>
+      </Parallax>
     </>
   );
 }
